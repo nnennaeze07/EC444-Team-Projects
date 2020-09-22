@@ -7,7 +7,7 @@ Date: 2020-09-22
 ## Summary
 In this quest, our team created a system that would feed fish at regular intervals. In order to do so, we used a servo to shake the fish food back and forth from a canister and created a program that would keep track of the time elapsed and display the time until the next feeding on the alphanumeric display.
 
-INVESTIGATIVE QUESTION RESPONSE HERE
+Currently, there is a place in the code where the timer interval is manually set. However, this can be made more dynamic by allowing the user to input any time, and storing that value in some global variable. This variable would be integrated into the timer task function, and easily used through the rest of the code. It would be much simpler to have the user enter the time interval in minute-second format, but if it were accepted in seconds there is a function in the code that converts seconds into m-s format. 
 
 ## Self-Assessment
 
