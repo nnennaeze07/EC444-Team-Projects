@@ -41,7 +41,7 @@ INVESTIGATIVE QUESTION RESPONSE HERE
 ## Sketches and Photos
 <center><img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-1/images/quest1_image1.jpeg" width="45%" /></center>  
 <center> </center> 
-<p><em> Circuitry set up. Use of GPIO Pins GND, 3V, SCL, SDA. <em></p>
+<p><em> Circuitry set up. Use of GPIO Pins GND, 3V, SCL, SDA, MO. <em></p>
 
 <center><img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-1/images/quest1_image2.jpg" width="45%" /></center>  
 <center> </center>
