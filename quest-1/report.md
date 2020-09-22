@@ -45,7 +45,7 @@ INVESTIGATIVE QUESTION RESPONSE HERE
 
 <center><img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-1/images/quest1_image2.jpg" width="45%" /></center>  
 <center> </center>
-<p><em> Minutes and second display<em></p>
+<p><em> Minutes and seconds display<em></p>
 
 
 ## Supporting Artifacts
