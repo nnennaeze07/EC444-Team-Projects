@@ -16,9 +16,9 @@
 #include "soc/mcpwm_periph.h"
 
 //You can get these value from the datasheet of servo you use, in general pulse width varies between 1000 to 2000 mocrosecond
-#define SERVO_MIN_PULSEWIDTH 1000 //Minimum pulse width in microsecond
-#define SERVO_MAX_PULSEWIDTH 2000 //Maximum pulse width in microsecond
-#define SERVO_MAX_DEGREE 90 //Maximum angle in degree upto which servo can rotate
+#define SERVO_MIN_PULSEWIDTH 500 //Minimum pulse width in microsecond
+#define SERVO_MAX_PULSEWIDTH 2300 //Maximum pulse width in microsecond
+#define SERVO_MAX_DEGREE 180 //Maximum angle in degree upto which servo can rotate
 
 static void mcpwm_example_gpio_initialize(void)
 {
@@ -46,7 +46,7 @@ static uint32_t servo_per_degree_init(uint32_t degree_of_rotation)
  */
 void mcpwm_example_servo_control(void *arg)
 {
-    uint32_t angle, count;
+    uint32_t angle, count, servoTurns;
     //1. mcpwm gpio initialization
     mcpwm_example_gpio_initialize();
 
@@ -59,16 +59,34 @@ void mcpwm_example_servo_control(void *arg)
     pwm_config.counter_mode = MCPWM_UP_COUNTER;
     pwm_config.duty_mode = MCPWM_DUTY_MODE_0;
     mcpwm_init(MCPWM_UNIT_0, MCPWM_TIMER_0, &pwm_config);    //Configure PWM0A & PWM0B with above settings
-    while (1) {
+
+
+
+    // something about it being time to feed
+    servoTurns = 0;
+    while (servoTurns < 4) { //turn 3 times
         for (count = 0; count < SERVO_MAX_DEGREE; count++) {
-            printf("Angle of rotation: %d\n", count);
+            // printf("Angle of rotation: %d\n", count);
+            count = count+2;
             angle = servo_per_degree_init(count);
-            printf("pulse width: %dus\n", angle);
+            // printf("pulse width: %dus\n", angle);
             mcpwm_set_duty_in_us(MCPWM_UNIT_0, MCPWM_TIMER_0, MCPWM_OPR_A, angle);
-            vTaskDelay(10);     //Add delay, since it takes time for servo to rotate, generally 100ms/60degree rotation at 5V
+            vTaskDelay(7);     //Add delay, since it takes time for servo to rotate, generally 100ms/60degree rotation at 5V
         }
-    }
+        for (count = (SERVO_MAX_DEGREE-1); count > 0; count--) {
+            count = count - 2;
+            // printf("Angle of rotation: %d\n", count);
+            angle = servo_per_degree_init(count);
+            // printf("pulse width: %dus\n", angle);
+            mcpwm_set_duty_in_us(MCPWM_UNIT_0, MCPWM_TIMER_0, MCPWM_OPR_A, angle);
+            vTaskDelay(7);     //Add delay, since it takes time for servo to rotate, generally 100ms/60degree rotation at 5V
+            //printf("Turning left 3x");
+        }
+        servoTurns++;
+      }
+      servoTurns = 0; //reset number of turns
 }
+
 
 void app_main(void)
 {
