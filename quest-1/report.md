@@ -52,9 +52,13 @@ INVESTIGATIVE QUESTION RESPONSE HERE
 - [Link to video demo](https://youtu.be/vahbK6kVZsM).
 
 
-## Modules, Tools, Source Used Including Attribution
+## Modules, Tools, Source Used Including Attribution 
+- GPIO
+- Servo PWM (Pulse Width Modulation)
 
 ## References
+- [Github repository for timer](https://github.com/espressif/esp-idf/tree/17ac4bad7381e579e5a7775755cc25480da47d97/examples/peripherals/timer_group)
+- [Github repository for servo control](https://github.com/espressif/esp-idf/tree/master/examples/peripherals/mcpwm/mcpwm_servo_control)
 
 -----
 
