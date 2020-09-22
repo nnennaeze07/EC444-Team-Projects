@@ -1,4 +1,4 @@
-# Quest Name
+# Quest 1 - Fish Feeder
 Authors: Nnenna Eze, Patricia Ganchozo, Lesbeth Roque
 
 Date: 2020-09-22
