@@ -1,14 +1,7 @@
+//Nnenna Eze, Lesbeth Roque
+//Date: 09/22/2020
+//Reference code in readme on github
 
-// /*
-//   - Barebones example using one timer as an interval alarm
-//   - Code prints every 1 second
-//   - Adapted and simplified from ESP-IDF timer example
-//   - See examples for more timer functionality
-//
-//   Emily Lam, September 2019
-//
-// */
-//
 
 #include <stdio.h>
 #include <string.h>
@@ -17,6 +10,7 @@
 #include "driver/uart.h"
 #include "driver/gpio.h"
 #include "esp_vfs_dev.h"
+#include "esp_attr.h"
 #include "driver/mcpwm.h"
 #include "soc/mcpwm_periph.h"
 #include "freertos/FreeRTOS.h"
@@ -33,9 +27,15 @@
 #define TEST_WITHOUT_RELOAD   0        // testing will be done without auto reload
 #define TEST_WITH_RELOAD      1        // testing will be done with auto reload
 
+//You can get these value from the datasheet of servo you use, in general pulse width varies between 1000 to 2000 mocrosecond
+#define SERVO_MIN_PULSEWIDTH 500 //Minimum pulse width in microsecond
+#define SERVO_MAX_PULSEWIDTH 2300 //Maximum pulse width in microsecond
+#define SERVO_MAX_DEGREE 180 //Maximum angle in degree upto which servo can rotate
+
 char str[16]; //make global;
+char temp[16];
 unsigned short display_int;
-unsigned short count;
+//unsigned short count;
 static const uint16_t alphafonttable[] = {
 
     0b0000000000000001, 0b0000000000000010, 0b0000000000000100,
@@ -171,7 +171,21 @@ static const uint16_t alphafonttable[] = {
 #define NACK_VAL                           0xFF // i2c nack value
 
 
-// Function to initiate i2c -- note the MSB declaration!
+static void mcpwm_example_gpio_initialize(void)
+{
+    printf("initializing mcpwm servo control gpio......\n");
+    mcpwm_gpio_init(MCPWM_UNIT_0, MCPWM0A, 18);    //Set GPIO 18 as PWM0A, to which servo is connected
+}
+
+static uint32_t servo_per_degree_init(uint32_t degree_of_rotation)
+{
+    uint32_t cal_pulsewidth = 0;
+    cal_pulsewidth = (SERVO_MIN_PULSEWIDTH + (((SERVO_MAX_PULSEWIDTH - SERVO_MIN_PULSEWIDTH) * (degree_of_rotation)) / (SERVO_MAX_DEGREE)));
+    return cal_pulsewidth;
+}
+
+
+//Function to initiate i2c -- note the MSB declaration!
 static void i2c_example_master_init(){
     // Debug
     printf("\n>> i2c Config\n");
@@ -305,14 +319,13 @@ static void test_alpha_display() {
     // Continually writes the same command
     while (1) {
       if(ret == ESP_OK) { //if button is pushed, the check if statement
-        //printf("Printing str: %s\n",str);
-
+          for(int j = 0;j < 2;j++){
+            displaybuffer[j] = alphafonttable[(uint16_t)temp[j]]; //finds each letter in table according to str, and sets to displaybuffer, then displays
+          }
+          for(int i = 2;i < 5;i++){
+            displaybuffer[i] = alphafonttable[(uint16_t)str[i-2]]; //finds each letter in table according to str, and sets to displaybuffer, then displays
+          }
         }
-        displaybuffer[i] = alphafonttable[(uint16_t)str[i]];
-        for(int i = 0;i < 5;i++){
-          displaybuffer[i] = alphafonttable[(uint16_t)str[i]]; //finds each letter in table according to str, and sets to displaybuffer, then displays
-        }
-
 
       // Send commands characters to display over I2C
       i2c_cmd_handle_t cmd4 = i2c_cmd_link_create();
@@ -397,7 +410,7 @@ static void alarm_init() {
 
 // The main task of this example program
 static void timer_evt_task(void *arg) {
-    display_int = 25;
+    display_int = 65;
     while (1) {
         // Create dummy structure to store structure from queue
         timer_event_t evt;
@@ -405,22 +418,61 @@ static void timer_evt_task(void *arg) {
         // Transfer from queue
         xQueueReceive(timer_queue, &evt, portMAX_DELAY);
 
-
-
-        /* Print the timer values passed by event */
-
-        //uint64_t task_counter_value;
-        //timer_get_counter_value(TIMER_GROUP_0, TIMER_0, &evt.timer_counter_value);
-        //printf("Time   : %.2f s\n", (double) evt.timer_counter_value / TIMER_SCALE);
-
-        sprintf(str,"%hu",display_int);
+        if(display_int >= 60){
+          unsigned short s;
+          unsigned short m;
+          m = display_int/60;
+          s = display_int - (m*60);
+          sprintf(temp,"%hu",m);
+          sprintf(str,"%hu",s);
+        }else{
+          sprintf(temp,"%s","00");
+          sprintf(str,"%hu",display_int);
+        }
         printf("Time   :%hu\n",display_int);
 
         if(display_int == 0){
+          display_int = 65+10;
           printf("Action\n");
-          display_int = 25;
-          //add servo stuff here?
+          int angle, count, servoTurns; //initilizing variables
+          //1. mcpwm gpio initialization
+          mcpwm_example_gpio_initialize();
 
+          //2. initial mcpwm configuration
+          printf("Configuring Initial Parameters of mcpwm......\n");
+          mcpwm_config_t pwm_config;
+          pwm_config.frequency = 50;    //frequency = 50Hz, i.e. for every servo motor time period should be 20ms
+          pwm_config.cmpr_a = 0;    //duty cycle of PWMxA = 0
+          pwm_config.cmpr_b = 0;    //duty cycle of PWMxb = 0
+          pwm_config.counter_mode = MCPWM_UP_COUNTER;
+          pwm_config.duty_mode = MCPWM_DUTY_MODE_0;
+          mcpwm_init(MCPWM_UNIT_0, MCPWM_TIMER_0, &pwm_config);    //Configure PWM0A & PWM0B with above settings
+
+
+
+          servoTurns = 0; //initialize to 0
+          while (servoTurns < 4) { //turn 3 times
+              for (count = 0; count < SERVO_MAX_DEGREE; count++) {//count from 0 until max degree, move servo right
+                  // printf("Angle of rotation: %d\n", count);
+                  count = count+2;
+                  angle = servo_per_degree_init(count);
+                  // printf("pulse width: %dus\n", angle);
+                  mcpwm_set_duty_in_us(MCPWM_UNIT_0, MCPWM_TIMER_0, MCPWM_OPR_A, angle);
+                  vTaskDelay(7);     //Add delay, since it takes time for servo to rotate, generally 100ms/60degree rotation at 5V
+              }
+
+              count = (SERVO_MAX_DEGREE-1); //continue from first for loop, move servo left
+              while (count > 0){
+                  count = count - 3; //make the servo move quicker
+                  // printf("Angle of rotation: %d\n", count);
+                  angle = servo_per_degree_init(count);
+                  // printf("pulse width: %dus\n", angle);
+                  mcpwm_set_duty_in_us(MCPWM_UNIT_0, MCPWM_TIMER_0, MCPWM_OPR_A, angle);
+                  vTaskDelay(7);     //Add delay, since it takes time for servo to rotate, generally 100ms/60degree rotation at 5V
+              }
+
+              servoTurns++; //increment to keep track of how many rotations servo has done
+            }
         }else{
           display_int--;
         }
@@ -436,8 +488,10 @@ void app_main(void) {
     timer_queue = xQueueCreate(10, sizeof(timer_event_t));
 
     // Create task to handle timer-based events
-    xTaskCreate(timer_evt_task, "timer_evt_task", 2048, NULL, configMAX_PRIORITIES, NULL);
-    xTaskCreate(test_alpha_display,"test_alpha_display", 4096, NULL, configMAX_PRIORITIES-1, NULL);
+   xTaskCreate(timer_evt_task, "timer_evt_task", 2048, NULL, configMAX_PRIORITIES, NULL);
+   xTaskCreate(test_alpha_display,"test_alpha_display", 4096, NULL, configMAX_PRIORITIES-1, NULL);
+  //  xTaskCreate(mcpwm_example_servo_control, "mcpwm_example_servo_control", 4096, NULL, configMAX_PRIORITIES, NULL);
+
 
 
     // Initiate alarm using timer API
