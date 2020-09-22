@@ -16,7 +16,7 @@ INVESTIGATIVE QUESTION RESPONSE HERE
 | Objective Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
 | Servo spins right then left three times without chatter at prescribed time intervals |1  |  1     | 
-| Alphanumeric display indicates hours and minutes  | 0 |  1     | 
+| Alphanumeric display indicates hours and minutes  | 1 |  1     | 
 | Display shows countdown time report every second with no time loss.  | 1 |  1     | 
 | Food dispensed at specified times.   | 1 |  1     | 
 | Demo delivered at scheduled time and report submitted in team folder with all required components | 1 |  1     | 
@@ -44,7 +44,7 @@ INVESTIGATIVE QUESTION RESPONSE HERE
 
 
 ## Supporting Artifacts
-- [Link to video demo](). Not to exceed 120s
+- [Link to video demo](https://youtu.be/vahbK6kVZsM).
 
 
 ## Modules, Tools, Source Used Including Attribution
