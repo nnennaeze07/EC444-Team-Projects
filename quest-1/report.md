@@ -1,11 +1,13 @@
 # Quest Name
-Authors: FirstName1 LastName1, FirstName2 LastName2, FirstName3 LastName 3
+Authors: Nnenna Eze, Patricia Ganchozo, Lesbeth Roque
 
-Date: YYYY-MM-DD
+Date: 2020-09-22
 -----
 
 ## Summary
+In this quest, our team created a system that would feed fish at regular intervals. In order to do so, we used a servo to shake the fish food back an forth from a canister and created a program that would keep track of the time elapsed and display the time (in hours and minutes) until the next feeding on the alphanumeric display.
 
+INVESTIGATIVE QUESTION RESPONSE HERE
 
 ## Self-Assessment
 
@@ -13,13 +15,13 @@ Date: YYYY-MM-DD
 
 | Objective Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
-| Objective One |  |  1     | 
-| Objective Two |  |  1     | 
-| Objective Three |  |  1     | 
-| Objective Four |  |  1     | 
-| Objective Five |  |  1     | 
-| Objective Six |  |  1     | 
-| Objective Seven |  |  1     | 
+| Servo spins right then left three times without chatter at prescribed time intervals |1  |  1     | 
+| Alphanumeric display indicates hours and minutes  | 1 |  1     | 
+| Display shows countdown time report every second with no time loss.  | 1 |  1     | 
+| Food dispensed at specified times.   | 1 |  1     | 
+| Demo delivered at scheduled time and report submitted in team folder with all required components | 1 |  1     | 
+| NA | 1 |  1     | 
+| Investigative question response | 1 |  1     | 
 
 
 ### Qualitative Criteria
