@@ -5,7 +5,7 @@ Date: 2020-09-22
 -----
 
 ## Summary
-In this quest, our team created a system that would feed fish at regular intervals. In order to do so, we used a servo to shake the fish food back an forth from a canister and created a program that would keep track of the time elapsed and display the time (in hours and minutes) until the next feeding on the alphanumeric display.
+In this quest, our team created a system that would feed fish at regular intervals. In order to do so, we used a servo to shake the fish food back and forth from a canister and created a program that would keep track of the time elapsed and display the time until the next feeding on the alphanumeric display.
 
 INVESTIGATIVE QUESTION RESPONSE HERE
 
