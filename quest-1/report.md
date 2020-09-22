@@ -20,7 +20,7 @@ INVESTIGATIVE QUESTION RESPONSE HERE
 | Display shows countdown time report every second with no time loss.  | 1 |  1     | 
 | Food dispensed at specified times.   | 1 |  1     | 
 | Demo delivered at scheduled time and report submitted in team folder with all required components | 1 |  1     | 
-| NA | 1 |  1     | 
+| N/A | - |  -     | 
 | Investigative question response | 1 |  1     | 
 
 
