@@ -35,7 +35,9 @@ Currently, there is a place in the code where the timer interval is manually set
 
 
 ## Solution Design
+Initially, there were several issues with the servo working together with the timer, so instead of defining them as two different tasks, the servo functionality wasincluded in the timer event function. The timer has a length of 1 second, so when it ends, the time is stored in a variable that is used in the alphanumeric display task to display the current time. Then, the timer automatically reloads and begins again. When the variable which keeps tracks of time reaches 0, then the servo function is implemented, and the timer pauses until the servo is finished moving. Then, the current time variable is reset and the timer starts again from its initial value.
 
+Another obstacle we faced was getting the servo to rotate the correct number of times, and rotate quicker. We learned that by incrementing a count variable in the for loop by more than one (i.e count +=3), the servo would rotate faster. The code also includes a while loop that counts the number of times the servo rotates. 
 
 
 ## Sketches and Photos
