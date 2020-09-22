@@ -432,7 +432,7 @@ static void timer_evt_task(void *arg) {
         printf("Time   :%hu\n",display_int);
 
         if(display_int == 0){
-          display_int = 65+10;
+          display_int = 65+9;
           printf("Action\n");
           int angle, count, servoTurns; //initilizing variables
           //1. mcpwm gpio initialization
@@ -451,7 +451,7 @@ static void timer_evt_task(void *arg) {
 
 
           servoTurns = 0; //initialize to 0
-          while (servoTurns < 4) { //turn 3 times
+          while (servoTurns < 3) { //turn 3 times
               for (count = 0; count < SERVO_MAX_DEGREE; count++) {//count from 0 until max degree, move servo right
                   // printf("Angle of rotation: %d\n", count);
                   count = count+2;
@@ -471,7 +471,7 @@ static void timer_evt_task(void *arg) {
                   vTaskDelay(7);     //Add delay, since it takes time for servo to rotate, generally 100ms/60degree rotation at 5V
               }
 
-              servoTurns++; //increment to keep track of how many rotations servo has done
+              ++servoTurns; //increment to keep track of how many rotations servo has done
             }
         }else{
           display_int--;
