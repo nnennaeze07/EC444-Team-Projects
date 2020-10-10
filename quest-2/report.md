@@ -1,7 +1,7 @@
-# Quest Name
-Authors: FirstName1 LastName1, FirstName2 LastName2, FirstName3 LastName 3
+# Quest 2 - Tactile Internet
+Authors: Nnenna Eze, Lesbeth Roque
 
-Date: YYYY-MM-DD
+Date: 2020-10-10
 -----
 
 ## Summary
