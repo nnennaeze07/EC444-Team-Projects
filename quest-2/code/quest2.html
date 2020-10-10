@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Quest 2 Data
+</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type = "text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type = "text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+
+<script type = "text/javascript">
+var thermst = [];
+var irrf = [];
+var ultras = [];
+//var msft = [];
+
+// window.setInterval(function() {
+//  alert('graph updated');
+// }, 10000);
+
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+	title:{
+		text: "Quest 2 Sensor Data"
+	},
+	data: [{
+							type: "line",
+							name: "Thermistor",
+							showInLegend: true,
+							dataPoints: thermst
+						},
+						{
+							type: "line",
+							name: "IR R",
+							showInLegend: true,
+							dataPoints: irrf
+						},
+						{
+							type: "line",
+							name: "GOOGL",
+							showInLegend: true,
+							dataPoints: ultras
+						},
+						// {
+						// 	type: "line",
+						// 	name: "MFST",
+						// 	showInLegend: true,
+						// 	dataPoints: msft
+						// },
+
+					]
+	});
+	$.ajax({url: "/data", success: function(result){
+		console.log(result);
+
+		for (var i = 0;i<result.length;i++){
+			var contents = result[i]
+			if(contents[1] == "AMZN"){
+				amzn.push({
+					x: parseFloat(contents[0]),
+					y: parseFloat(contents[2])
+				});
+			}if (contents[1] == "FB"){
+				fb.push({
+					x: parseFloat(contents[0]),
+					y: parseFloat(contents[2])
+				});
+			}if (contents[1] == "GOOGL"){
+				googl.push({
+					x: parseFloat(contents[0]),
+					y: parseFloat(contents[2])
+				});
+			}if (contents[1] == "MSFT"){
+				msft.push({
+					x: parseFloat(contents[0]),
+					y: parseFloat(contents[2])
+				});
+			}
+		}
+			 chart.render();
+		 }});
+}
+	</script>
+	</head>
+	<body>
+	<div id="chartContainer" ></div>
+	</body>
+	</html>
