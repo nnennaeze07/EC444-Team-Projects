@@ -7,6 +7,8 @@ Date: 2020-10-10
 ## <em>Summary</em>
 In this quest, our team recorded data from sensors, and used nodejs to continously graph the data at regular intervals. To be specific, we worked with three sensors: a thermistor, an infrared rangefinder, and an ultrasonic sensor. These sensors were wired with the esp32, and adc readings were taken to then calculate the data for each sensor in its specific unit. Once the data was calculated, it was sent to a csv file, which quest2.js read and sent to quest2.html for it to be graphed. 
 
+Investigative Question: Tabulate and compare the accuracy and speed of the IR and ultrasonic sensors. Which one would you prefer to use to support driving a robotic car? In order to decide which sensor is more accurate, its application must be thought about. In terms of driving a robotic car, the infrared sensor seems to be much more accurate. Based on our data, as well as research into both sensors, it appears that although neither sensor is perfect, the IR sensor seems to have a lower deviation from measured distance than the ultrasonic sensor, and its more accurate on a range of different materials (for example, if the robotic car is sensing wood material or rubber). 
+
 ## Self-Assessment
 
 ### Objective Criteria
