@@ -1,3 +1,6 @@
+<!-- Quest 2 (Team 15)
+Authors: Nnenna Eze, Lesbeth Roque
+Date: 10/10/2020t -->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -12,74 +15,71 @@ Quest 2 Data
 var thermst = [];
 var irrf = [];
 var ultras = [];
-//var msft = [];
+var timesvar = 0;
+var times = [timesvar];
 
-// window.setInterval(function() {
-//  alert('graph updated');
-// }, 10000);
+window.setInterval(function() {
+	window.onload = function () {
+		var chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "Quest 2 Sensor Data"
+		},
+		data: [{
+								type: "line",
+								name: "Thermistor",
+								showInLegend: true,
+								dataPoints: thermst
+							},
+							{
+								type: "line",
+								name: "Ultrasonic",
+								showInLegend: true,
+								dataPoints: ultras
+							},
+							{
+								type: "line",
+								name: "IR Rangefinder",
+								showInLegend: true,
+								dataPoints: irrf
+							},
+							// {
+							// 	type: "line",
+							// 	name: "MFST",
+							// 	showInLegend: true,
+							// 	dataPoints: msft
+							// },
 
-window.onload = function () {
-	var chart = new CanvasJS.Chart("chartContainer", {
-	title:{
-		text: "Quest 2 Sensor Data"
-	},
-	data: [{
-							type: "line",
-							name: "Thermistor",
-							showInLegend: true,
-							dataPoints: thermst
-						},
-						{
-							type: "line",
-							name: "IR R",
-							showInLegend: true,
-							dataPoints: irrf
-						},
-						{
-							type: "line",
-							name: "GOOGL",
-							showInLegend: true,
-							dataPoints: ultras
-						},
-						// {
-						// 	type: "line",
-						// 	name: "MFST",
-						// 	showInLegend: true,
-						// 	dataPoints: msft
-						// },
+						]
+		});
+		$.ajax({url: "/data", success: function(result){
+			console.log(result);
 
-					]
-	});
-	$.ajax({url: "/data", success: function(result){
-		console.log(result);
+			for (var i = 0;i<result.length;i++){
+				var contents = result[i]
+				thermst.push({
+					x: parseFloat(contents[0]),
+					y: parseFloat(times[i])
+				});
 
-		for (var i = 0;i<result.length;i++){
-			var contents = result[i]
-			if(contents[1] == "AMZN"){
-				amzn.push({
-					x: parseFloat(contents[0]),
-					y: parseFloat(contents[2])
+				ultras.push({
+					x: parseFloat(contents[1]),
+					y: parseFloat(times[i])
 				});
-			}if (contents[1] == "FB"){
-				fb.push({
-					x: parseFloat(contents[0]),
-					y: parseFloat(contents[2])
+
+				irrf.push({
+					x: parseFloat(contents[2]),
+					y: parseFloat(times[i])
 				});
-			}if (contents[1] == "GOOGL"){
-				googl.push({
-					x: parseFloat(contents[0]),
-					y: parseFloat(contents[2])
-				});
-			}if (contents[1] == "MSFT"){
-				msft.push({
-					x: parseFloat(contents[0]),
-					y: parseFloat(contents[2])
-				});
+				times.push(timesvar + 3);
+				timesvar = timesvar + 3;
 			}
-		}
-			 chart.render();
-		 }});
-}
+				 chart.render();
+			 }});
+	}
+ alert('graph updated');
+}, 3000);
+
+
 	</script>
 	</head>
 	<body>
