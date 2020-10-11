@@ -24,32 +24,58 @@ window.setInterval(function() {
 		title:{
 			text: "Quest 2 Sensor Data"
 		},
+		axisY:[{
+			title: "Thermistor",
+			lineColor: "#369EAD",
+			tickColor: "#369EAD",
+			labelFontColor: "#369EAD",
+			titleFontColor: "#369EAD",
+			includeZero: true,
+			suffix: "C"
+		},
+		{
+			title: "Ultrasonic",
+			lineColor:"#C24642",
+			tickColor:"#C24642",
+			labelFontColor:"#C24642",
+			titleFontColor:"#C24642",
+			includeZero: true,
+			suffix: "m"
+		}],
+		axisY2:{
+			{
+				title: "IR",
+				lineColor:"#7F6084",
+				tickColor:"#7F6084",
+				labelFontColor:"#7F6084",
+				titleFontColor:"#7F6084",
+				includeZero: true,
+				suffix: "m"
+		},
 		data: [{
 								type: "line",
 								name: "Thermistor",
+								color: "#369EAD",
 								showInLegend: true,
+								axisYIndex: 0,
 								dataPoints: thermst
 							},
 							{
 								type: "line",
 								name: "Ultrasonic",
+								color:"#C24642",
 								showInLegend: true,
+								axisYIndex: 1,
 								dataPoints: ultras
 							},
 							{
 								type: "line",
 								name: "IR Rangefinder",
+								color: "#7F6084",
 								showInLegend: true,
+								axisYType: "secondary",
 								dataPoints: irrf
-							},
-							// {
-							// 	type: "line",
-							// 	name: "MFST",
-							// 	showInLegend: true,
-							// 	dataPoints: msft
-							// },
-
-						]
+							}]
 		});
 		$.ajax({url: "/data", success: function(result){
 			console.log(result);
