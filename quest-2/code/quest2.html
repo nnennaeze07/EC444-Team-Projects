@@ -1,6 +1,6 @@
 <!-- Quest 2 (Team 15)
 Authors: Nnenna Eze, Lesbeth Roque
-Date: 10/10/2020 -->
+Date: 10/10/2020t -->
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -87,71 +87,7 @@ var times = [timesvar];
 						x: parseFloat(times[i]),
 						y: parseFloat(contents[0])
 					});
-		var chart = new CanvasJS.Chart("chartContainer", {
-		title:{
-			text: "Quest 2 Sensor Data"
-		},
-		axisY:[{
-			title: "Thermistor",
-			lineColor: "#369EAD",
-			tickColor: "#369EAD",
-			labelFontColor: "#369EAD",
-			titleFontColor: "#369EAD",
-			includeZero: true,
-			suffix: "C"
-		},
-		{
-			title: "Ultrasonic",
-			lineColor:"#C24642",
-			tickColor:"#C24642",
-			labelFontColor:"#C24642",
-			titleFontColor:"#C24642",
-			includeZero: true,
-			suffix: "m"
-		}],
-		axisY2:[{
-				title: "IR",
-				lineColor:"#7F6084",
-				tickColor:"#7F6084",
-				labelFontColor:"#7F6084",
-				titleFontColor:"#7F6084",
-				includeZero: true,
-				suffix: "m"
-		}],
-		data: [{
-				type: "line",
-				name: "Thermistor",
-				color: "#369EAD",
-				showInLegend: true,
-				axisYIndex: 0,
-				dataPoints: thermst
-				},
-				{
-				type: "line",
-				name: "Ultrasonic",
-				color:"#C24642",
-				showInLegend: true,
-				axisYIndex: 1,
-				dataPoints: ultras
-				},
-				{
-				type: "line",
-				name: "IR Rangefinder",
-				color: "#7F6084",
-				showInLegend: true,
-				axisYType: "secondary",
-				dataPoints: irrf
-				}]
-		});
-		$.ajax({url: "/data", success: function(result){
-			console.log(result);
 
-			for (var i = 0;i<result.length;i++){
-				var contents = result[i]
-				thermst.push({
-					x: parseFloat(contents[0]),
-					y: parseFloat(times[i])
-				});
 					ultras.push({
 						x: parseFloat(times[i]),
 						y: parseFloat(contents[1])
