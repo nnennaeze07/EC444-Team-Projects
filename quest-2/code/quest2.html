@@ -17,6 +17,7 @@ var irrf = [];
 var ultras = [];
 var timesvar = 0;
 var times = [timesvar];
+var count = 0;
 
 	window.onload = function () {
     //var tstamp = new Date();
@@ -81,28 +82,31 @@ var times = [timesvar];
 			$.ajax({url: "/data", success: function(result){
 				console.log(result);
         console.log(times);
-				for (var i = 0;i<result.length;i++){
-					var contents = result[i]
+        //var i = 0;i<result.length;i++
+				while (count<result.length){
+					var contents = result[count]
 					thermst.push({
-						x: parseFloat(times[i]),
+						x: parseFloat(times[count]),
 						y: parseFloat(contents[0])
 					});
 
 					ultras.push({
-						x: parseFloat(times[i]),
+						x: parseFloat(times[count]),
 						y: parseFloat(contents[1])
 					});
 
 					irrf.push({
-						x: parseFloat(times[i]),
+						x: parseFloat(times[count]),
 						y: parseFloat(contents[2])
 					});
 					times.push(timesvar + 3);
 					timesvar = timesvar + 3;
+          count++;
           // timesvar = new Date();
           // times.push(timesvar);
 				}
 					 chart.render();
+
 				 }});
 		}
     setInterval(loadweb,3000);
