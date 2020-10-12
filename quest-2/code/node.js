@@ -1,8 +1,17 @@
+<<<<<<< HEAD
 /* Authors: Nnenna Eze, Lesbeth Roque
 Quest 2: Tactile Internet
 Team 15
 10-07-20 */
 
+=======
+// /* Author: Lesbeth Roque
+// Cluster 2, Node Stuff
+// 10-07-2020
+// Team 15*/
+
+// this one appends rather than creates a file, makes multiple rows...
+>>>>>>> 34107e645ce30d3af09b5bb0aead3b893cc44881
 // api-serialport; SOURCE: https://github.com/serialport/website/blob/master/docs/api-serialport.md
 // api-parser-readline source: https://serialport.io/docs/api-parser-readline
 
@@ -28,7 +37,11 @@ parser.on('data',function(data) {
 
 	parser.on('data',line => console.log(`>${line}`)) // print data on console
 
+<<<<<<< HEAD
 	fs.writeFile('consoledata.txt', data, function(err){ //create a file named consoledata.txt:
+=======
+	fs.appendFile('consoledata3.txt', data, function(err){ //create a file named consoledata.txt:
+>>>>>>> 34107e645ce30d3af09b5bb0aead3b893cc44881
 	if (err) throw err;
 	// console.log('Data: Temperature in C, Ultrasonic distance(m), IR distance(m)!')
 	});
