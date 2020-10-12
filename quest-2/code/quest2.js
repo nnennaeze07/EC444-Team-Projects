@@ -26,7 +26,7 @@ parser.on('data',function(data) {
 
 	parser.on('data',line => console.log(`>${line}`)) // print data on console
 
-	fs.writeFile('consoledata.txt', data, function(err){ //create a file named consoledata.txt:
+	fs.appendFile('consoledata.txt', data, function(err){ //create a file named consoledata.txt:
 	if (err) throw err;
 	// console.log('Data: Temperature in C, Ultrasonic distance(m), IR distance(m)!')
 	});

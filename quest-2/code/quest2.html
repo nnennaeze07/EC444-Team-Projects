@@ -42,8 +42,7 @@ window.setInterval(function() {
 			includeZero: true,
 			suffix: "m"
 		}],
-		axisY2:{
-			{
+		axisY2:[{
 				title: "IR",
 				lineColor:"#7F6084",
 				tickColor:"#7F6084",
@@ -51,31 +50,31 @@ window.setInterval(function() {
 				titleFontColor:"#7F6084",
 				includeZero: true,
 				suffix: "m"
-		},
+		}],
 		data: [{
-								type: "line",
-								name: "Thermistor",
-								color: "#369EAD",
-								showInLegend: true,
-								axisYIndex: 0,
-								dataPoints: thermst
-							},
-							{
-								type: "line",
-								name: "Ultrasonic",
-								color:"#C24642",
-								showInLegend: true,
-								axisYIndex: 1,
-								dataPoints: ultras
-							},
-							{
-								type: "line",
-								name: "IR Rangefinder",
-								color: "#7F6084",
-								showInLegend: true,
-								axisYType: "secondary",
-								dataPoints: irrf
-							}]
+				type: "line",
+				name: "Thermistor",
+				color: "#369EAD",
+				showInLegend: true,
+				axisYIndex: 0,
+				dataPoints: thermst
+				},
+				{
+				type: "line",
+				name: "Ultrasonic",
+				color:"#C24642",
+				showInLegend: true,
+				axisYIndex: 1,
+				dataPoints: ultras
+				},
+				{
+				type: "line",
+				name: "IR Rangefinder",
+				color: "#7F6084",
+				showInLegend: true,
+				axisYType: "secondary",
+				dataPoints: irrf
+				}]
 		});
 		$.ajax({url: "/data", success: function(result){
 			console.log(result);

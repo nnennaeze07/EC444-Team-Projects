@@ -20,12 +20,17 @@ Team 15
 
 #if CONFIG_IDF_TARGET_ESP32
 static esp_adc_cal_characteristics_t *adc_chars;
-static const adc_channel_t channel = ADC_CHANNEL_6;     //ADC1: GPIO34 (A2), GPIO39 (A3), GPIO36 (A4)
+static const adc_channel_t channel1 = ADC_CHANNEL_6;     //ADC1: GPIO34 (A2) = ADC1_GPIO34_CHANNEL     ADC1_CHANNEL_6
+static const adc_channel_t channel2 = ADC_CHANNEL_3;     //ADC1: GPIO39 (A3) = ADC1_GPIO39_CHANNEL     ADC1_CHANNEL_3
+static const adc_channel_t channel3 = ADC_CHANNEL_0;     //ADC1: GPIO36 (A4) = ADC1_GPIO36_CHANNEL     ADC1_CHANNEL_0
+// source on channels: https://github.com/espressif/esp-idf/blob/8bc19ba/components/soc/soc/esp32/include/soc/adc_channel.h
 //A2 - this is an analog input A2 and also GPI #34. Note it is not an output-capable pin! It uses ADC #1
 // A3 - this is an analog input A3 and also GPI #39. Note it is not an output-capable pin! It uses ADC #1
 // A4 - this is an analog input A4 and also GPI #36. Note it is not an output-capable pin! It uses ADC #1
 #elif CONFIG_IDF_TARGET_ESP32S2BETA
-static const adc_channel_t channel = ADC_CHANNEL_6;     // GPIO7 if ADC1, GPIO17 if ADC2
+static const adc_channel_t channel1 = ADC_CHANNEL_6;     // GPIO7 if ADC1, GPIO17 if ADC2
+static const adc_channel_t channel2 = ADC_CHANNEL_3;     //ADC1: GPIO34 (A2), GPIO39 (A3), GPIO36 (A4)
+static const adc_channel_t channel3 = ADC_CHANNEL_0;     //ADC1: GPIO34 (A2), GPIO39 (A3), GPIO36 (A4)
 #endif
 static const adc_atten_t atten = ADC_ATTEN_DB_0;
 static const adc_unit_t unit = ADC_UNIT_1;
@@ -75,9 +80,13 @@ void app_main(void)
     //Configure ADC
     if (unit == ADC_UNIT_1) {
         adc1_config_width(ADC_WIDTH_BIT_12);
-        adc1_config_channel_atten(channel, atten);
+        adc1_config_channel_atten(channel1, atten);
+        adc1_config_channel_atten(channel2, atten);
+        adc1_config_channel_atten(channel3, atten);
     } else {
-        adc2_config_channel_atten((adc2_channel_t)channel, atten);
+        adc2_config_channel_atten((adc2_channel_t)channel1, atten);
+        adc2_config_channel_atten((adc2_channel_t)channel2, atten);
+        adc2_config_channel_atten((adc2_channel_t)channel3, atten);
     }
 
 #if CONFIG_IDF_TARGET_ESP32
@@ -88,25 +97,35 @@ void app_main(void)
 #endif
 
     while (1) {
-        uint32_t adc_reading = 0;
+        uint32_t adc_reading1 = 0;
+        uint32_t adc_reading2 = 0;
+        uint32_t adc_reading3 = 0;
         //Multisampling
         for (int i = 0; i < NO_OF_SAMPLES; i++) {
             if (unit == ADC_UNIT_1) {
-                adc_reading += adc1_get_raw((adc1_channel_t)channel);
+                adc_reading1 += adc1_get_raw((adc1_channel_t)channel1);
+                adc_reading2 += adc1_get_raw((adc1_channel_t)channel2);
+                adc_reading3 += adc1_get_raw((adc1_channel_t)channel3);
             } else {
-                int raw;
-                adc2_get_raw((adc2_channel_t)channel, ADC_WIDTH_BIT_12, &raw);
-                adc_reading += raw;
+                int raw1,raw2,raw3;
+                adc2_get_raw((adc2_channel_t)channel1, ADC_WIDTH_BIT_12, &raw1);
+                adc2_get_raw((adc2_channel_t)channel2, ADC_WIDTH_BIT_12, &raw2);
+                adc2_get_raw((adc2_channel_t)channel3, ADC_WIDTH_BIT_12, &raw3);
+                adc_reading1 += raw1;
+                adc_reading2 += raw2;
+                adc_reading3 += raw3;
             }
         }
         //R0=10K, B=3435, T0=25 celsius->298.15
         //adc_reading/1000;
-        adc_reading /= NO_OF_SAMPLES;
+        adc_reading1 /= NO_OF_SAMPLES;
+        adc_reading2 /= NO_OF_SAMPLES;
+        adc_reading3 /= NO_OF_SAMPLES;
 #if CONFIG_IDF_TARGET_ESP32
         //Convert adc_reading to voltage in mV
         float Beta = 1.0/3435;
         float Tinit = 1.0/(298.15);
-        temp = (float)adc_reading/10000; //thermistor resistor
+        temp = (float)adc_reading1/10000; //thermistor resistor
         temp = log10(temp);
         temp = temp*Beta; //B coefficient given
         temp = temp + Tinit; //273.15K = 25C
@@ -115,11 +134,11 @@ void app_main(void)
         //code derived from reference below
         //https://learn.adafruit.com/thermistor/using-a-thermistor
 
-        dist_ultrasonic = (adc_reading) * 5;
+        dist_ultrasonic = (adc_reading2) * 5;
         dist_ultrasonic/=1000;
         // Equation taken from data sheet for the analog input
         // https://www.maxbotix.com/documents/HRLV-MaxSonar-EZ_Datasheet.pdf
-        uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading, adc_chars);
+        uint32_t voltage = esp_adc_cal_raw_to_voltage(adc_reading3, adc_chars);
         dist_IR = ((16569/((float)voltage + 25)) - 11)/1000;
         //for skill 15, change atten value to 2.5
         //code derived from reference below (skill 15)
@@ -133,6 +152,6 @@ void app_main(void)
 #elif CONFIG_IDF_TARGET_ESP32S2BETA
         //printf("ADC%d CH%d Raw: %d\t\n", unit, channel, adc_reading);
 #endif
-        vTaskDelay(pdMS_TO_TICKS(1000));
+        vTaskDelay(pdMS_TO_TICKS(3000));
     }
 }
