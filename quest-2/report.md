@@ -15,9 +15,9 @@ Investigative Question: In order to decide which sensor is more accurate, its ap
 
 | Objective Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
-| Periodic reporting of ultrasonic range in m |  |  1     | 
-| Periodic reporting of IR range in m |  |  1     | 
-| Period reporting of temperature in C |  |  1     | 
+| Periodic reporting of ultrasonic range in m |  1|  1     | 
+| Periodic reporting of IR range in m | 1 |  1     | 
+| Period reporting of temperature in C | 1 |  1     | 
 | Results displayed at host as text |  |  1     | 
 | Results graphed at host continuously |  |  1     | 
 | Demo delivered at scheduled time and report submitted in team folder with all required components | 1* |  1     | 
@@ -36,7 +36,9 @@ Investigative Question: In order to decide which sensor is more accurate, its ap
 
 
 ## Solution Design
-//Lesbeth can speak about connection with sensors, and collecting data to put into file
+In order to connect the sensors, we built off our wiring designs in skill 13 (thermistor), skill 14 (ultrasonic sensor), and skill 15 (IR rangefinder). In all of these skills, we used GPIO34 (Pin A2) on the ESP32. However, in order to wire multiple sensors and collect its data, we needed to connect each sensor to its own pin and obtain ADC reading separately. Thus, we connected the thermistor to pin A2, the ultrasonic sensor to pin A3, and the IR rangefinder to pin A4 (GPIO34, GPIO39, and GPIO36, respectively). We used these analog inputs due to the fact they use ADC#1 and were non-output capable pins. Then, we calculated the needed temperature and distances in engineering units from the formulas programmed in the aformentioned skills. (Do I need to explain why we use non-output capable pins??). 
+
+Moreover, to collect data and graph it into our localhost, we programmed a javascript file to collect data from the serial port, place the collected data into a textfile, and converted the textfile into a csv file for the graphing portion.
 
 The graphing portion of the quest intially proved to be very difficult. We had a lot of trouble figuring out how to read the data. We were able to solve this issue, and used a simple graphs, with multiple lines representing each sensor, as well as multiple y-axes in order to account for the different units of each sensor. 
 
@@ -44,25 +46,20 @@ The graphing portion of the quest intially proved to be very difficult. We had a
 ## Sketches and Photos
 <center><img src="./images/ece444.png" width="25%" /></center>  
 <center> </center>
-//lesbeth can take pics and post them here
+//lesbeth can take pics and post them here 
 
 
 ## Supporting Artifacts
-- [Link to video demo](). Not to exceed 120s
+- [Link to video demo](). 
 
 
 ## Modules, Tools, Source Used Including Attribution
-ADC
-
-Ultrasonic Sensor
-
-IR Rangefinder
-
-Thermistor
-
-Canvasjs
-
-Nodejs
+- ADC
+- Ultrasonic Sensor
+- IR Rangefinder
+- Thermistor
+- Canvasjs
+- Nodejs
 
 ## References
 https://iopscience.iop.org/article/10.1088/1757-899X/149/1/012141/pdf --> to help answer investigative question
