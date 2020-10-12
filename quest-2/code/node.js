@@ -1,19 +1,21 @@
-/*Quest 2 (Team 15)
-Authors: Nnenna Eze, Lesbeth Roque
-Date: 10/10/2020*/
+/* Authors: Nnenna Eze, Lesbeth Roque
+Quest 2: Tactile Internet
+Team 15
+10-07-20 */
+
+// api-serialport; SOURCE: https://github.com/serialport/website/blob/master/docs/api-serialport.md
+// api-parser-readline source: https://serialport.io/docs/api-parser-readline
+
 const SerialPort = require('serialport')
 const Readline = require('@serialport/parser-readline')
 const port = new SerialPort('/dev/cu.SLAB_USBtoUART', { baudRate: 115200}) //Serial port event
 const parser = new Readline()
-
-var express = require('express');
-var app = express();
-var path = require('path');
-var fs = require('fs');
-var csv = require("csv-parse");
-
+var fs = require('fs')
 var count = 0;
 port.pipe(parser) // this reads from the serial port
+//parser.on('data',line => console.log(`>${line}`))
+// port.write('ROBOT POWER ON\n')
+
 
 console.log('Data: Temperature in C, Ultrasonic distance(m), IR distance(m)!')
 parser.on('data',function(data) {
@@ -33,29 +35,3 @@ parser.on('data',function(data) {
 	}
 	count++; //increase count variable
 });
-
-//jQuery timeout function
-//window.setinterval
-// viewed at http://localhost:8080
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname + '/quest2.html'));
-});
-
-// request data at http://localhost:8080/data or just "/data"
-app.get('/data', function(req, res) {
-  var data = [];  // Array to hold all csv data
-  fs.createReadStream('consoledata.txt')
-  .pipe(csv())
-  .on('data', (row) => {
-    console.log(row);
-    data.push(row);  // Add row of data to array
-  })
-  .on('end', () => {
-    console.log('CSV file successfully processed');
-    res.send(data);  // Send array of data back to requestor
-  });
-});
-console.log('Request Complete?');
-
-
-app.listen(8080);
