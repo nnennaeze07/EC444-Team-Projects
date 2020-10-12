@@ -19,7 +19,7 @@ Investigative Question: In order to decide which sensor is more accurate, its ap
 | Periodic reporting of IR range in m | 1 |  1     | 
 | Period reporting of temperature in C | 1 |  1     | 
 | Results displayed at host as text |  |  1     | 
-| Results graphed at host continuously |  |  1     | 
+| Results graphed at host continuously | 1 |  1     | 
 | Demo delivered at scheduled time and report submitted in team folder with all required components | 1* |  1     | 
 | Investigative question response |  |  1     | 
 
@@ -29,10 +29,10 @@ Investigative Question: In order to decide which sensor is more accurate, its ap
 
 | Qualitative Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
-| Quality of solution | ? |  5     | 
+| Quality of solution | 4 |  5     | 
 | Quality of report.md including use of graphics | 3 |  3     | 
 | Quality of code reporting | 3 |  3     | 
-| Quality of video presentation | ? |  3     | 
+| Quality of video presentation | 2 |  3     | 
 
 
 ## Solution Design
