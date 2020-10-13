@@ -53,7 +53,7 @@ The graphing portion of the quest initially proved to be very difficult. We had 
 
 
 ## Supporting Artifacts
-- [Link to video demo](). 
+- [Link to video demo](https://youtu.be/2GZDOt8i8uY). 
 
 
 ## Modules, Tools, Source Used Including Attribution
