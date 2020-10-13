@@ -64,5 +64,17 @@ The graphing portion of the quest intially proved to be very difficult. We had a
 ## References
 https://iopscience.iop.org/article/10.1088/1757-899X/149/1/012141/pdf --> to help answer investigative question
 
+https://canvasjs.com/forums/topic/multiple-chart-with-data-from-csv-file/
+
+https://canvasjs.com/forums/topic/jquery-on-local-host-not-working-want-to-read-local-csv-file/
+
+https://github.com/BU-EC444/code-examples/blob/master/DataLoadingTest/index.html
+
+https://canvasjs.com/docs/charts/how-to/create-charts-from-csv/
+
+https://github.com/serialport/website/blob/master/docs/api-serialport.md
+
+https://github.com/espressif/esp-idf/blob/8bc19ba/components/soc/soc/esp32/include/soc/adc_channel.h
+
 -----
 
