@@ -18,10 +18,10 @@ Investigative Question: In order to decide which sensor is more accurate, its ap
 | Periodic reporting of ultrasonic range in m |  1|  1     | 
 | Periodic reporting of IR range in m | 1 |  1     | 
 | Period reporting of temperature in C | 1 |  1     | 
-| Results displayed at host as text |  |  1     | 
+| Results displayed at host as text | 1 |  1     | 
 | Results graphed at host continuously | 1 |  1     | 
 | Demo delivered at scheduled time and report submitted in team folder with all required components | 1* |  1     | 
-| Investigative question response |  |  1     | 
+| Investigative question response | 1 |  1     | 
 
 *an extension was given to Team 15 and approved by Professor Little for Monday night
 
