@@ -40,7 +40,7 @@ In order to connect the sensors, we built off our wiring designs in skill 13 (th
 
 Moreover, to collect data and graph it into our localhost, we programmed a javascript file to collect data from the serial port, place the collected data into a textfile, and converted the textfile into a csv file for the graphing portion.
 
-The graphing portion of the quest intially proved to be very difficult. We had a lot of trouble figuring out how to read the data. We were able to solve this issue, and used a simple graphs, with multiple lines representing each sensor, as well as multiple y-axes in order to account for the different units of each sensor. 
+The graphing portion of the quest initially proved to be very difficult. We had a lot of trouble figuring out how to read the data. We were able to solve this issue, and used a simple graph, with multiple lines representing each sensor, as well as multiple y-axes in order to account for the different units of each sensor. 
 
 
 ## Sketches and Photos
