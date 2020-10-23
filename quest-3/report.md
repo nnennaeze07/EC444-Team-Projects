@@ -23,7 +23,7 @@ Using a WLAN (wireless local area network) technology, as opposed to WPAN (wirel
 | Controls LED on box from remote client via portal |  |  1     | 
 | Sources web cam video into remote client| 1 |  1     | 
 | ESP32 and Rpi are connected wirelessly to (or as) router; ESP32 sensor data are delivered to local node server (on local laptop or Rpi) | 1 |  1     | 
-| Demo delivered at scheduled time and report submitted in team folder with all required components |  |  1     | 
+| Demo delivered at scheduled time and report submitted in team folder with all required components | 1 |  1     | 
 | Investigative question response| 1 |  1     | 
 
 
