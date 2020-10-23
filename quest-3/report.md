@@ -1,4 +1,4 @@
-# Hurrican Box with Remote Access
+# Hurricane Box with Remote Access
 Authors: Nnenna Eze, Lesbeth Roque
 
 Date: 2020-10-23
