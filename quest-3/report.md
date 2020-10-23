@@ -47,7 +47,17 @@ When working with this quest, our team ran into a couple of issues in configurin
 ## Sketches and Photos
 <center><img src="./images/ece444.png" width="25%" /></center>  
 <center> </center>
+<img src="https://user-images.githubusercontent.com/44929220/97051482-43420f80-154d-11eb-804b-a98759a8305c.jpg" width="250" height="250" />
 
+<img src="https://user-images.githubusercontent.com/44929220/97051495-489f5a00-154d-11eb-9479-bfc8aec7bfa9.jpg" width="250" height="250" />
+
+<img src="https://user-images.githubusercontent.com/44929220/97051500-4b01b400-154d-11eb-8f2b-182b7ef18d34.jpg" width="250" height="250"/>
+
+<img src="https://user-images.githubusercontent.com/44929220/97051506-4d640e00-154d-11eb-81b4-2a971f43c6d0.jpg" width="250" height="250"/>
+
+<img src="https://user-images.githubusercontent.com/44929220/97051510-4fc66800-154d-11eb-803f-cb99a1bfc38b.jpg" width="250" height="250"/>
+
+<img src="https://user-images.githubusercontent.com/44929220/97051517-52c15880-154d-11eb-9f8f-8b149877b852.jpg" width="250" height="250"/>
 
 ## Supporting Artifacts
 - [Link to video demo](). Not to exceed 120s
