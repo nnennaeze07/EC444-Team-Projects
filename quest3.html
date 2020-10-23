@@ -1,0 +1,109 @@
+<!-- Quest 3 (Team 15)
+Authors: Nnenna Eze, Lesbeth Roque
+Date: 10/23/2020 -->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>
+Quest 3 Data
+</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type = "text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type = "text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+
+<script type = "text/javascript">
+	//roll,pitch,temp
+var thermst = [];
+var accelroll = [];
+var accelpitch = []
+//var ultras = [];
+var timesvar = 0;
+var times = [timesvar];
+var count = 0;
+
+//window.setInterval(function() {
+	window.onload = function () {
+			var chart = new CanvasJS.Chart("chartContainer", {
+				title:{
+					text: "Quest 3 Sensor Data"
+				},
+				axisY:[{
+					title: "Temperature",
+					lineColor: "#369EAD",
+					tickColor: "#369EAD",
+					labelFontColor: "#369EAD",
+					titleFontColor: "#369EAD",
+					includeZero: true,
+					suffix: "C"
+				},
+				{
+					title: "Angle",
+					lineColor:"#C24642",
+					tickColor:"#C24642",
+					labelFontColor:"#C24642",
+					titleFontColor:"#C24642",
+					includeZero: true,
+					//suffix: "degrees"
+				}],
+				data: [{
+								type: "line",
+								name: "Thermistor",
+								showInLegend: true,
+								axisYIndex: 0,
+								dataPoints: thermst
+							},
+							{
+								type: "line",
+								name: "Accelerometer - Roll",
+								showInLegend: true,
+								axisYIndex: 1,
+								dataPoints: accelroll
+							},
+							{
+						 		type: "line",
+							 	name: "Accelerometer - Pitch",
+							 	showInLegend: true,
+								axisYIndex: 1,
+							 	dataPoints: accelpitch
+							 }]
+		});
+		function loadweb(){
+		$.ajax({url: "/data", success: function(result){
+			console.log(result);
+			console.log(times);
+			console.log(count);
+			//while (count < result.length){
+				var contents = result[0]
+
+				thermst.push({
+					x: parseFloat(times[count]),
+					y: parseFloat(contents[2])
+				});
+
+				accelroll.push({
+					x: parseFloat(times[count]),
+					y: parseFloat(contents[0])
+				});
+
+				accelpitch.push({
+					x: parseFloat(times[count]),
+					y: parseFloat(contents[1])
+				})
+
+				times.push(timesvar + 3);
+				timesvar = timesvar + 3;
+				count++;
+		//	}
+				 chart.render();
+			 }});
+	}
+	setInterval(loadweb,3000);
+}
+
+
+	</script>
+	</head>
+	<body>
+	<div id="chartContainer" ></div>
+	</body>
+	</html>
