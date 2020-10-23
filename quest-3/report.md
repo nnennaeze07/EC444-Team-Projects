@@ -65,8 +65,8 @@ When working with this quest, our team ran into a couple of issues in configurin
 
 ## References
 - [Accelerometer Data Sheet](https://cdn-learn.adafruit.com/assets/assets/000/070/556/original/adxl343.pdf?1549287964)
-- [Tilt Sensing for the Accelerometer] (https://wiki.dfrobot.com/How_to_Use_a_Three-Axis_Accelerometer_for_Tilt_Sensing)
-- [Thermistor Formula] (https://learn.adafruit.com/thermistor/using-a-thermistor)
+- [Tilt Sensing for the Accelerometer](https://wiki.dfrobot.com/How_to_Use_a_Three-Axis_Accelerometer_for_Tilt_Sensing)
+- [Thermistor Formula](https://learn.adafruit.com/thermistor/using-a-thermistor)
 
 -----
 
