@@ -60,7 +60,7 @@ When working with this quest, our team ran into a couple of issues in configurin
 <img src="https://user-images.githubusercontent.com/44929220/97051517-52c15880-154d-11eb-9f8f-8b149877b852.jpg" width="250" height="250"/>
 
 ## Supporting Artifacts
-- [Link to video demo](). Not to exceed 120s
+- [Link to video demo](https://youtu.be/6j2Jxlibbjk).
 
 
 ## Modules, Tools, Source Used Including Attribution
