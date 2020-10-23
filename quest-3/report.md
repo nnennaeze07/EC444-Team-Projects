@@ -5,7 +5,7 @@ Date: 2020-10-23
 -----
 
 ## Summary
-This quest combined skills 19 to 24 to read data from two sensors connected to the ESP32. This data (temperature for the thermistor sensor, and pitch and roll for the accelerometer) was graphed on a remote client. The graph is updated continuously every 3 seconds. There was also an LED connected to the ESP32, which could be turned on or off from the remote web client. Finally, the raspberry pi zero camera was connected, to record that the LED was in fact toggling when the user requested it to do so. Tjos was done through the wifi access of a loaner router, provided by Professor Little. 
+This quest combined skills 19 to 24 to read data from two sensors connected to the ESP32. This data (temperature for the thermistor sensor, and pitch and roll for the accelerometer) was graphed on a remote client. The graph is updated continuously every 3 seconds. There was also an LED connected to the ESP32, which could be turned on or off from the remote web client. Finally, the raspberry pi zero camera was connected, to record that the LED was in fact toggling when the user requested it to do so. This was done through the wifi access of a loaner router, provided by Professor Little. 
 
 ## Self-Assessment
 
@@ -13,23 +13,24 @@ This quest combined skills 19 to 24 to read data from two sensors connected to t
 
 | Objective Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
-| Objective One | 1 |  1     | 
-| Objective Two | 1 |  1     | 
-| Objective Three |  |  1     | 
-| Objective Four | 1 |  1     | 
-| Objective Five | 1 |  1     | 
-| Objective Six |  |  1     | 
-| Objective Seven | 1 |  1     | 
+| Measures acceleration and temperature | 1 |  1     | 
+| Displays real-time data at remote client via portal using separate IP network | 1 |  1     | 
+| Controls LED on box from remote client via portal |  |  1     | 
+| Sources web cam video into remote client| 1 |  1     | 
+| ESP32 and Rpi are connected wirelessly to (or as) router; ESP32 sensor data are delivered to local node server (on local laptop or Rpi) | 1 |  1     | 
+| Demo delivered at scheduled time and report submitted in team folder with all required components |  |  1     | 
+| Investigative question response| 1 |  1     | 
+
 
 
 ### Qualitative Criteria
 
 | Qualitative Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
-| Quality of solution |  |  5     | 
-| Quality of report.md including use of graphics |  |  3     | 
-| Quality of code reporting |  |  3     | 
-| Quality of video presentation |  |  3     | 
+| Quality of solution | 3 |  5     | 
+| Quality of report.md including use of graphics | 2 |  3     | 
+| Quality of code reporting | 3 |  3     | 
+| Quality of video presentation | 2 |  3     | 
 
 
 ## Solution Design
