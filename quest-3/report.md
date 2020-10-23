@@ -7,6 +7,11 @@ Date: 2020-10-23
 ## Summary
 This quest combined skills 19 to 24 to read data from two sensors connected to the ESP32. This data (temperature for the thermistor sensor, and pitch and roll for the accelerometer) was graphed on a remote client. The graph is updated continuously every 3 seconds. There was also an LED connected to the ESP32, which could be turned on or off from the remote web client. Finally, the raspberry pi zero camera was connected, to record that the LED was in fact toggling when the user requested it to do so. This was done through the wifi access of a loaner router, provided by Professor Little. 
 
+#### Investigative Question Reponse: What are steps you can take to make your device and system low power? Please cite sources for you answer.
+
+Using a WLAN (wireless local area network) technology, as opposed to WPAN (wireless personal area network) technology, is higher in power consumption. To make the device lower power, bluetooth or card readers could be used to communicate between the device and its server. Moreover, turning off the servers screen when not being viewed could decrease battery consumption.
+
+
 ## Self-Assessment
 
 ### Objective Criteria
