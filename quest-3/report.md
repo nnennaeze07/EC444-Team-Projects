@@ -9,7 +9,11 @@ This quest combined skills 19 to 24 to read data from two sensors connected to t
 
 #### Investigative Question Reponse: What are steps you can take to make your device and system low power? Please cite sources for you answer.
 
-Using a WLAN (wireless local area network) technology, as opposed to WPAN (wireless personal area network) technology, is higher in power consumption. To make the device lower power, bluetooth or card readers could be used to communicate between the device and its server. Moreover, turning off the servers screen when not being viewed could decrease battery consumption.
+  Several steps can be taken to make our device and system low power. For instance, using WLAN (wireless local area network) technology, as opposed to WPAN (wireless personal area network) technology, is higher in power consumption, thus WPAN can be used instead. Using Bluetooth or card readersto communicate between the device and its server can also make the system low power. Turning off certain devices when they are not being used is generally a great way to lower power. For example, turning off the web camera when it is not in use, because this can save bandwidth and allow for more efficient device performance. 
+ 
+The esp32 also a deep-sleep mode, which can be enabled to make the system low power. So, when the esp is not receiving requests from the client, deep sleep mode can be enabled, so that services not being used by the device are idle (or asleep). This method overall will prevent the esp from using a high amount of power. 
+
+Finally, simply changing the code used can be a huge way to lower system and device power. For example, adjusting how the events are handled, so that minimum events are running at the same time can make the system more efficient, there fore lowering its power use. There are several ways tasks can be handled, including FIFO, High Priority, or Round Robin methods, so that the device can remain in idle mode for a maximum amount of time while still completing all required tasks.  
 
 
 ## Self-Assessment
