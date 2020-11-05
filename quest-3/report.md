@@ -89,6 +89,7 @@ When working with this quest, our team ran into a couple of issues in configurin
 - [Thermistor Formula](https://learn.adafruit.com/thermistor/using-a-thermistor)
 - [LED Button](https://www.w3docs.com/snippets/html/how-to-make-button-onclick-in-html.html)
 - [UDP Protocol with ESP and LEDs](https://www.allen.dj/esp8266-nodemcu-button-slider-remote-node-js-server/)
+- [ESP Low Power Modes](https://www.espressif.com/sites/default/files/9b-esp8266-low_power_solutions_en_0.pdf)
 
 -----
 
