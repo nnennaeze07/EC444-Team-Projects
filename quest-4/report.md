@@ -64,6 +64,23 @@ One interesting design aspect of our quest was programming fobs to work as both 
 <center><img src="./images/ece444.png" width="25%" /></center>  
 <center> </center>
 
+<i>Transfer of information: how the fobs connect</i>
+
+<img src="https://user-images.githubusercontent.com/44929220/99035322-6c066500-254d-11eb-8dd7-5f6347e1a546.jpg" width="300" height="300">
+
+
+
+<i>Data is received through IR, vote and fob ID sent to poll leader</i>
+
+<img src="https://user-images.githubusercontent.com/44929220/99035348-76c0fa00-254d-11eb-83d7-f32d2dc3d036.jpeg" width="600" height="250">
+
+
+
+<i>Data is received by poll leader, and displayed on console in format "ID,vote"</i>
+
+<img src="https://user-images.githubusercontent.com/44929220/99035323-6dd02880-254d-11eb-97a5-68e44fea9e78.jpg" width="600" height="250">
+
+
 
 ## Supporting Artifacts
 - [Link to video demo](). Not to exceed 120s
