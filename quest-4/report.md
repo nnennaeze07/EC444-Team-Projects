@@ -31,12 +31,12 @@ For each above, explain how you would mitigate these issues in your system.
 
 | Objective Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
-| Fob performs IR NFC data exchange of vote to another fob (LED indication) |  |  1     | 
-| Receiving fob communicates vote to Poll Leader (LED indication) via network communication |  |  1     | 
+| Fob performs IR NFC data exchange of vote to another fob (LED indication) | 1 |  1     | 
+| Receiving fob communicates vote to Poll Leader (LED indication) via network communication | 1 |  1     | 
 | Poll leader (LED indication) is replaced if fails |  |  1     | 
-| Poll Leader reports votes to server database. |  |  1     | 
+| Poll Leader reports votes to server database. | 1 |  1     | 
 | Portal allows query to database to show actual vote counts per candidate |  |  1     | 
-| Operates over mutiple sites or with all available fobs (up to 9) |  |  1     | 
+| Operates over mutiple sites or with all available fobs (up to 9) | 1 |  1     | 
 | Investigative question response|  |  1     | 
 
  
@@ -44,18 +44,18 @@ For each above, explain how you would mitigate these issues in your system.
 
 | Qualitative Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
-| Quality of solution |  |  5     | 
-| Quality of report.md including use of graphics |  |  3     | 
-| Quality of code reporting |  |  3     | 
+| Quality of solution | 4 |  5     | 
+| Quality of report.md including use of graphics | 3 |  3     | 
+| Quality of code reporting | 3 |  3     | 
 | Quality of video presentation |  |  3     | 
 
 
 ## Solution Design
-// talk about how we could only test with 3 fobs
 The testing of our code was a bit difficult because we could only test it on 3 fobs at a time. So, one fob was designated to choose the vote, a second fob received this vote through IR, and a final fob was the poll leader. It was especially difficult to test when the poll leader failed, bc this meant that if another fob was elected as poll leader, it had to also act as either an IR sender or receiver of the vote. Overall, our team did as much testing as possible with the limited resources we had. 
 
-// talk about how fobs were used as both client and server
+
 One interesting design aspect of our quest was programming fobs to work as both servers and clients. For example, the fob elected as poll leader had to act as a client (in order to send data to the overall server), and a server (in order to receive data from the IR receiving fob). The ID was taken into consideration when deciding which fobs should act clients, servers, or both. For example, because the initial fob sending the vote did not need to communicate through udp, the main function only creates the udp_client task for every ID except that of the initial fob. Likewise, since only the poll leader needed to act as a server, the udp_server task only ran if the current ID was classified as being the current poll leader. This precaution works well with a 3 fob system, and may need to be slightly altered to work for a system with more than 3 fobs, but it will likely still operate successfully. This however, cannot be tested, since only 3 fobs were available for testing out the code for this quest. 
+
 
 //lesbeth talk about database stuff
 
