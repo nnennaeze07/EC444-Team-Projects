@@ -5,16 +5,8 @@ Date: 2020-11-12
 -----
 
 ## Summary
-In this quest, we were able to use the skills from this cluster and from pasts clusters to create an electronic voting system. Notably, we used IR-TX/RX to communicate between fobs, UDP clients and servers, databases, and node.js. The system starts with one fob voting on a color (red, green, blue). Upon bushing a button, the fob ID and its vote is sent to a second fob through IR. Then, the second fob passes along this data to the poll leader, through UDP. The second fob acts as a udp client in this case, whereas the poll leader acts as a udp server. When the poll leader receives this data, it then becomes a udp client, and sends the data to another server, where it is placed into a tingo database, and displayed onto a webpage. The webpage shows a table of IDs, votes, and timestamps. Other features of the quest include electing a new fob as poll leader when the current pollleader fails, and displaying actual vote counts through querying database. 
+In this quest, we were able to use the skills from this cluster and from pasts clusters to create an electronic voting system. Notably, we used IR-TX/RX to communicate between fobs, UDP clients and servers, databases, and node.js. The system starts with one fob voting on a color (red, green, blue). Upon pushing a button, the fob ID and its vote is sent to a second fob through IR. Then, the second fob passes along this data to the poll leader, through UDP. The second fob acts as a UDP client in this case, whereas the poll leader acts as a UDP server. When the poll leader receives this data, it then becomes a udp client, and sends the data to a web server, where it is placed into a Tingo database, and displayed onto a webpage. The webpage shows a table of IDs, votes, and timestamps. Other features of the quest include electing a new fob as poll leader when the current pollleader fails, and displaying actual vote counts through querying the database. 
 
-
-(Still editing -- took this from the site and planning to reword)
-Complete the IR-TX/RX Skill: build fobs and bring up TX/RX code to demonstrate it works: Adapt code to transmit vote (R, B, G) using IR
-Set up UDP message passing on your local wireless network: build a method to exchange vote payloads to one or more destinations (e.g., point-to-point or point-multipoint). Make sure it works from fob to leader and leader to node.js
-Complete the Database Skill: set up tingodb or equivalent on your server for the vote data and be able to receive and save data from the leader to the node.js and to the DB.
-Interconnect your node.js server to the DB and host the queries for the vote data on a web page.
-Integrate these steps into as single application that is loaded onto all of the fobs.
-Do this last, once the above works: Implement a failover method if the Poll Leader is shut down. A new Poll Leader must be selected within 45 sec.
 
 #### Investigative Question
 List 5 different ways that you can hack the system (including influencing the vote outcome or prevenging votes via denial of service)
@@ -72,13 +64,18 @@ One interesting design aspect of our quest was programming fobs to work as both 
 
 <i>Data is received through IR, vote and fob ID sent to poll leader</i>
 
-<img src="https://user-images.githubusercontent.com/44929220/99035348-76c0fa00-254d-11eb-83d7-f32d2dc3d036.jpeg" width="600" height="250">
+<img src="https://user-images.githubusercontent.com/44929220/99035348-76c0fa00-254d-11eb-83d7-f32d2dc3d036.jpeg" width="600" height="300">
 
 
 
 <i>Data is received by poll leader, and displayed on console in format "ID,vote"</i>
 
-<img src="https://user-images.githubusercontent.com/44929220/99035323-6dd02880-254d-11eb-97a5-68e44fea9e78.jpg" width="600" height="250">
+<img src="https://user-images.githubusercontent.com/44929220/99035323-6dd02880-254d-11eb-97a5-68e44fea9e78.jpg" width="600" height="300">
+
+
+
+<i>Table shown on webpage, based on data in TingoDB database</i>
+<img src="https://user-images.githubusercontent.com/44929220/99128089-e7145d80-25d7-11eb-99dd-314ef10dcbe6.jpeg" width="600" height="300">
 
 
 
