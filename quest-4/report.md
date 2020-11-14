@@ -12,12 +12,12 @@ In this quest, we were able to use the skills from this cluster and from pasts c
 List 5 different ways that you can hack the system (including influencing the vote outcome or prevenging votes via denial of service)
 For each above, explain how you would mitigate these issues in your system.
 1. Spoofing: When the server is down, it is possible for a local user to spoof the normal server by starting their own server. In this way the 'spoof' server can read the data and queries made. In our system, we could create sockets and only allow certain permissions from certain users.
-2. B
-3. C
-4. D
-5. E
+2. Denial of Service: A denial of services attack, such as a UDP flood can be directed towards an unponed port an and make the messages sent unreachable (such as vote not sending data from a particular fob). This can be resolved by placing a firewall with UDP flood protection and by setting rate limits on the UDP traffic to be monitored and protect the network's bandwidth.
+3. Denial of Service: This can also occur in a node.js file, where there is an attack on a database. In this case, you can hack the system by sending data incomprehensible to the parser of the data in the database and stop the database function from working and showing the correct amount of votes. This can be resolved by providing user authentication where only the authenticated and identified user can send data to the database to be read and stored correctly.
+4. Enpoint attacks: A person could attack the wifi system in place with the ESP32's, thus not allowing them to communicate through UDP. This can be mitigated by creating a strong firewall that only allows certain users and IP addresses to pass through.
+5. Data interception: Last, data interception can occur if another server is near the system and is able to read in the vote data. This would influence the vote outcomes because those fobs votes would not be counted in the final count of all of the fob votes. This can be mitigated by adding a more secure network and ensuring that data is only sent to a particular server.
 
-While the server is running, it is not possible for a malicious user to take the place of the normal database server. However, when the server is down, it is possible for a local user to spoof the normal server by starting their own server. The spoof server could read passwords and queries sent by clients, but could not return any data because the PGDATA directory would still be secure because of directory permissions.
+
 
 ## Self-Assessment
 
@@ -97,6 +97,7 @@ Databases are a collection of information that can be easily accessed, manage, a
 - [Timestamp](https://www.toptal.com/software/definitive-guide-to-datetime-manipulation#:~:text=Getting%20the%20Current%20Timestamp,passed%20since%20January%201%2C%201970)
 - [Button](https://gist.github.com/aerrity/fd393e5511106420fba0c9602cc05d35)
 - [Preveting server spoofing](https://www.postgresql.org/docs/9.1/preventing-server-spoofing.html)
+- [UDP Floods, DOS](https://jncie.files.wordpress.com/2008/09/801003_protecting-the-network-from-denial-of-service-floods.pdf)
 
 -----
 
