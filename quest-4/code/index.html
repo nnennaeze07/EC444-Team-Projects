@@ -1,0 +1,78 @@
+<!-- Quest 3 (Team 15)
+Authors: Nnenna Eze, Lesbeth Roque
+Date: 11/09/2020
+https://www.w3schools.com/html/html_tables.asp
+https://www.w3schools.com/js/js_output.asp-->
+
+<!DOCTYPE html>
+<html>
+<title>Quest 4 Data</title>
+<meta charset="utf-8">
+<script src="/socket.io/socket.io.js"></script>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<body>
+
+<h2>Quest 4 Data</h2>
+<button id="myButton">Reset vote counts!</button>
+<br>
+<p>Database Entry:
+<div id="testing">Testing</div>
+</p>
+
+<!-- <p id="red"> Red
+</p>
+<p id="blue">Blue
+</p>
+<p id="green">Green
+</p> -->
+
+<table style="width:100%">
+  <tr>
+    <th>Timestamp</th>
+    <th>FOB_ID</th>
+    <th>vote</th>
+  </tr>
+	<tbody id="demo">
+	</tbody>
+</table>
+
+</body>
+
+<script>
+	var timestamp = Date.now();
+  var socket = io();
+
+  socket.on('data_transmit', function(data) {
+    console.log(data);
+    var txt = '';
+    document.getElementById('testing').innerHTML = JSON.stringify(data[data.length-1]);
+  	for ( i = 0; i < data.length; i++) {
+        txt += '<tr><td>'+JSON.stringify(data[i].timestamp)+'</td><td>'+JSON.stringify(data[i].ID)+'</td><td>'+JSON.stringify(data[i].vote)+'</td></tr>';
+  	};
+  document.getElementById('demo').innerHTML = txt;
+  });
+
+	const button = document.getElementById('myButton');
+	button.addEventListener('click', function(e) {
+  console.log('button was clicked');
+
+  fetch('/clicked', {method: 'POST'})
+    .then(function(response) {
+      if(response.ok) {
+        console.log('click was recorded');
+        return;
+      }
+      throw new Error('Request failed.');
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+
+</script>
+</html>
