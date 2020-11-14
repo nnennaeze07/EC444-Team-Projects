@@ -29,7 +29,7 @@ For each above, explain how you would mitigate these issues in your system.
 | Receiving fob communicates vote to Poll Leader (LED indication) via network communication | 1 |  1     | 
 | Poll leader (LED indication) is replaced if fails | 0 |  1     | 
 | Poll Leader reports votes to server database. | 1 |  1     | 
-| Portal allows query to database to show actual vote counts per candidate |  |  1     | 
+| Portal allows query to database to show actual vote counts per candidate | 1 |  1     | 
 | Operates over mutiple sites or with all available fobs (up to 9) | 1 |  1     | 
 | Investigative question response| 1 |  1     | 
 
