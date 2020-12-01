@@ -55,39 +55,63 @@ Date: 11/09/2020 -->
 </body>
 
 <script>
-  const button = document.getElementById('button1');
-  button.addEventListener('click', function(e) {
-  console.log('button was clicked');
 
-  fetch('/clicked', {method: 'POST'})
-    .then(function(response) {
-      if(response.ok) {
-        console.log('click was recorded -- Start');
-        return;
-      }
-      throw new Error('Request failed.');
-    })
-    .catch(function(error) {
-    console.log(error);
+  // socket set-up on html
+  // these are onclick events. Sends command to node.js so it can be sent to the esp32.
+  $(function() {
+    var socket = io();
+    socket.emit('go', "null");
+    socket.emit('stop', "null");
+
+    $(document).ready(function(){
+      $(".go").on('click', function(e){
+        socket.emit('go', "go");
+        console.log("go");
+      });
     });
-  });
 
-  const button = document.getElementById('button2');
-  button.addEventListener('click', function(e) {
-  console.log('button was clicked');
-
-  fetch('/clicked', {method: 'POST'})
-    .then(function(response) {
-      if(response.ok) {
-        console.log('click was recorded -- Stop');
-        return;
-      }
-      throw new Error('Request failed.');
-    })
-    .catch(function(error) {
-      console.log(error);
+    $(document).ready(function(){
+      $(".stop").on('click', function(e){
+        socket.emit('stop', "stop");
+        console.log("stop");
+      });
     });
-  });
+
+  })
+
+  // const button = document.getElementById('button1'); 
+  // button.addEventListener('click', function(e) {
+  // console.log('button was clicked');
+
+  // fetch('/clicked', {method: 'POST'})
+  //   .then(function(response) {
+  //     if(response.ok) {
+  //       console.log('click was recorded -- Start');
+  //       return;
+  //     }
+  //     throw new Error('Request failed.');
+  //   })
+  //   .catch(function(error) {
+  //   console.log(error);
+  //   });
+  // });
+
+  // const button = document.getElementById('button2');
+  // button.addEventListener('click', function(e) {
+  // console.log('button was clicked');
+
+  // fetch('/clicked', {method: 'POST'})
+  //   .then(function(response) {
+  //     if(response.ok) {
+  //       console.log('click was recorded -- Stop');
+  //       return;
+  //     }
+  //     throw new Error('Request failed.');
+  //   })
+  //   .catch(function(error) {
+  //     console.log(error);
+  //   });
+  // });
 
 </script>
 </html>
