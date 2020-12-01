@@ -5,7 +5,7 @@ Date: 2020-12-01
 -----
 
 ## Summary
-In this quest our goal was create a system in which our crawler could use "cruise control" to maintain a constant velocity and avoid collisions. This quest focused on creating a control loop that is able to maintain the crawler's speed, use a sensor to prevent collisions, and use UDP to send and receive data from the ESP32 server to a Node.js client in order to start or stop the crawler from an html webpage.
+In this quest our goal was create a system in which our buggy could use "cruise control" to maintain a constant velocity and avoid collisions. This quest focused on creating a control loop that is able to maintain the buggy's speed, use a LIDAR sensor to prevent collisions, and use UDP to send and receive data from the ESP32 server to a Node.js client in order to start or stop the buggy from an html webpage. An alphanumeric display is also included in the wiring to display the distance being read by the LIDAR sensor, as well as an optical encoder to measure wheel speed through pulse counting. 
 
 ## Self-Assessment
 
@@ -33,6 +33,7 @@ In this quest our goal was create a system in which our crawler could use "cruis
 
 
 ## Solution Design
+//talk about Lidar and detecting collisions
 
 
 
@@ -49,11 +50,19 @@ In this quest our goal was create a system in which our crawler could use "cruis
 - Node.js
 - Socket.io
 - Control loops through PID
-- 
+- Pulse Counting
+- Alphanumeric Display
+- Optical Encoder
+- LIDAR v3
+- I2C buses and connections
 
 ## References
 - [Button on HTML](https://gist.github.com/aerrity/fd393e5511106420fba0c9602cc05d35)
 - [Button formatting](https://www.w3schools.com/howto/howto_css_block_buttons.asp)
+- [Pulse Counting](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/pcnt.html)
+- [Optical Encoder Wiring](https://learn.sparkfun.com/tutorials/qrd1114-optical-detector-hookup-guide#example-circuit)
+- [Udp Example](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
+- [Lidar Datasheet](http://static.garmin.com/pumac/LIDAR_Lite_v3_Operation_Manual_and_Technical_Specifications.pdf)
 
 -----
 
