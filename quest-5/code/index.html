@@ -1,0 +1,93 @@
+<!-- Quest 5 (Team 15)
+Authors: Nnenna Eze, Lesbeth Roque
+Date: 11/09/2020 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/socket.io/socket.io.js"></script>
+<style>
+.block1 {
+  display: block;
+  width: 70%;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block1:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.block2 {
+  display: block;
+  width: 70%;
+  border: none;
+  background-color: #FF6347;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block2:hover {
+  background-color: #ddd;
+  color: black;
+}
+</style>
+</head>
+<body>
+
+<h2>Quest 5 Data</h2>
+
+<button type="button1" class="block1" style="float: center;">Go</button>
+
+<br>
+<button type="button2" class="block2" style="float: center;">Stop</button>
+
+</body>
+
+<script>
+  const button = document.getElementById('button1');
+  button.addEventListener('click', function(e) {
+  console.log('button was clicked');
+
+  fetch('/clicked', {method: 'POST'})
+    .then(function(response) {
+      if(response.ok) {
+        console.log('click was recorded -- Start');
+        return;
+      }
+      throw new Error('Request failed.');
+    })
+    .catch(function(error) {
+    console.log(error);
+    });
+  });
+
+  const button = document.getElementById('button2');
+  button.addEventListener('click', function(e) {
+  console.log('button was clicked');
+
+  fetch('/clicked', {method: 'POST'})
+    .then(function(response) {
+      if(response.ok) {
+        console.log('click was recorded -- Stop');
+        return;
+      }
+      throw new Error('Request failed.');
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  });
+
+</script>
+</html>
