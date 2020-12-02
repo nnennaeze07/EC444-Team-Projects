@@ -7,6 +7,9 @@ Date: 2020-12-01
 ## Summary
 In this quest our goal was create a system in which our buggy could use "cruise control" to maintain a constant velocity and avoid collisions. This quest focused on creating a control loop that is able to maintain the buggy's speed, use a LIDAR sensor to prevent collisions, and use UDP to send and receive data from the ESP32 server to a Node.js client in order to start or stop the buggy from an html webpage. An alphanumeric display is also included in the wiring to display the distance being read by the LIDAR sensor, as well as an optical encoder to measure wheel speed through pulse counting. 
 
+#### Investigative Question: How would you change your solution if you were asked to provide ‘adaptive’ cruise control?
+In order to provide 'adaptive cruise control,' we would add on to our current solution by adding a function that is able to set and detect a distance between our car and another moving object. By detecting the distance, we could also attempt to detect the speed of the object moving infront of the crawler. If the speed if the moving object in front of the crawler is within a certain range of values (say between 0.1-0.4 m/s), we could match the speed of the object infront of us. However, if the speed is too slow (less than 0.1 m/s), then our crawler could try to "change lanes" as long as the wall/objects to the left or right of it are not within 25cm of distance with the crawler.
+
 ## Self-Assessment
 
 ### Objective Criteria
@@ -63,6 +66,7 @@ In this quest our goal was create a system in which our buggy could use "cruise 
 - [Optical Encoder Wiring](https://learn.sparkfun.com/tutorials/qrd1114-optical-detector-hookup-guide#example-circuit)
 - [Udp Example](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
 - [Lidar Datasheet](http://static.garmin.com/pumac/LIDAR_Lite_v3_Operation_Manual_and_Technical_Specifications.pdf)
+- [Adaptive Cruise Control](https://www.extremetech.com/extreme/157172-what-is-adaptive-cruise-control-and-how-does-it-work#:~:text=To%20use%20adaptive%20cruise%20control,1%20or%205%20mph%20increments.)
 
 -----
 
