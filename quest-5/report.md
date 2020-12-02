@@ -70,7 +70,7 @@ Last, UDP was incredibly important in allowing the ESP to send and receive data.
 
 
 ## Supporting Artifacts
-- [Link to video demo](). Not to exceed 120s
+- [Link to video demo](https://youtu.be/PG7yi2zLw0A).
 
 
 ## Modules, Tools, Source Used Including Attribution
