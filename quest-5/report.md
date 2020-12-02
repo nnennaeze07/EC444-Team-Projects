@@ -36,8 +36,15 @@ In order to provide 'adaptive cruise control,' we would add on to our current so
 
 
 ## Solution Design
-//talk about Lidar and detecting collisions
+There were multiple important components attached to the buggy. Notably, the optical encoder, lidar sensor, and the alphanumeric display. 
 
+The optical encoder is able to use a black and white pattern displayed on a circle to detect pulses. Each pulse is measured and in terms of distance. Using ADC, this distance is read and is divided by time to obtain wheel speed. Once this wheel speed is detected, this information is let to a control loop (PID) to adjust the setspeed of the buggy.
+
+In order for the ESP to understand data from the lidar and alphanumeric display, I2C is used. The lidar sensor is placed in the front of the buggy and is used to detect the distance between the buggy and a wall/obstruction. Because we used Lidar v3, in order to initialte we had to write to reg 0x00 with the value 0x04, and then, repeatedly read register 0x01 until the least significant bit went low. The alphanumeric display is able to show the distance between the buggy and obstruction ahead. To use two I2C sensors connected to one ESP, we needed to change the address of the alphanumeric display.
+
+Moreover, to get more power, the Lidar v3 sensor and steering servo are both wired up to the H-bridge. The high voltage of the H-bridge comes from the Electronic Speed Control, where this control gives the H-bridge a power of 5V.
+
+Last, UDP was incredibly important in allowing the ESP to send and receive data. This is where the user is able to control the car through node.js from a webserver. In this system, the node.js acts as a client that is connected to the ESP32 server. When the green 'Go' button is pressed, the command "go" is sent to the ESP32 to move forward and when the red 'Stop' button is pressed, the command "stop" is sent to the ESP32 to stop the car.
 
 
 ## Sketches and Photos
