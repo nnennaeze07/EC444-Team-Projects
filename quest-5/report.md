@@ -42,7 +42,9 @@ In order to provide 'adaptive cruise control,' we would add on to our current so
 
 ## Sketches and Photos
 <i>Cruise Control System</i>
-<img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-5/images/Quest5_System.jpg" width="800" >
+<p align="left">
+<img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-5/images/Quest5_System.jpg" width=600>
+</p>
 
 
 ## Supporting Artifacts
