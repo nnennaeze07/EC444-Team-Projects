@@ -53,6 +53,21 @@ Last, UDP was incredibly important in allowing the ESP to send and receive data.
 <img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-5/images/Quest5_System.jpg" width=600>
 </p>
 
+<i>Meet Patricia, our Buggy :)</i>
+<p align="left">
+<img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-5/images/quest5_buggy.jpg" width=600>
+</p>
+
+<i>Optical Encoder and Black and White Wheel</i>
+<p align="left">
+<img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-5/images/quest5_encoder.jpg" width=600>
+</p>
+
+<i>Alphanumeric Display</i>
+<p align="left">
+<img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-5/images/quest5_alphanumeric.jpg" width=600>
+</p>
+
 
 ## Supporting Artifacts
 - [Link to video demo](). Not to exceed 120s
