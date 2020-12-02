@@ -19,7 +19,7 @@ In order to provide 'adaptive cruise control,' we would add on to our current so
 | Controls steering to maintain center of course +/- 25cm for entire length | 1 |  1     | 
 | Uses PID for speed control holding a fixed speed setpoint after startup and before slowdown [0.1-0.4 m/s] | 1 |  1     | 
 | Stops within 20 cm of end without collision | 1  |  1     | 
-| Start and stop instructions issued wirelessly from phone, laptop or ESP) |  |  1     | 
+| Start and stop instructions issued wirelessly from phone, laptop or ESP) | 1 |  1     | 
 | Measures wheel speed or distance | 1 |  1     | 
 | Uses alpha display to show current distance or speed | 1 |  1     | 
 | Successfully traverses A-B in one go, no hits or nudges | 1 |  1     | 
