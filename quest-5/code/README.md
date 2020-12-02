@@ -5,3 +5,10 @@ In this folder we present 2 programs that work together in this system. In "    
 In index.js, we are able to use socket.io to read and send data from the ESP server to the Node.js client. The receiveData() function ensures data is sent and received by printing out a message on the console.
 
 In index.html, a local host webpage displays two buttons, a go and stop button. Once these buttons are clicked, an event click is able to point to the index.js file to communicate with the crawler.
+
+#### Sources
+- [Button on HTML](https://gist.github.com/aerrity/fd393e5511106420fba0c9602cc05d35)
+- [Button formatting](https://www.w3schools.com/howto/howto_css_block_buttons.asp)
+- [Pulse Counting](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/peripherals/pcnt.html)
+- [Udp Example](https://www.geeksforgeeks.org/udp-server-client-implementation-c/)
+- [Lidar Datasheet](http://static.garmin.com/pumac/LIDAR_Lite_v3_Operation_Manual_and_Technical_Specifications.pdf)
