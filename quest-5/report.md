@@ -8,7 +8,7 @@ Date: 2020-12-01
 In this quest our goal was create a system in which our buggy could use "cruise control" to maintain a constant velocity and avoid collisions. This quest focused on creating a control loop that is able to maintain the buggy's speed, use a LIDAR sensor to prevent collisions, and use UDP to send and receive data from the ESP32 server to a Node.js client in order to start or stop the buggy from an html webpage. An alphanumeric display is also included in the wiring to display the distance being read by the LIDAR sensor, as well as an optical encoder to measure wheel speed through pulse counting. 
 
 #### Investigative Question: How would you change your solution if you were asked to provide ‘adaptive’ cruise control?
-In order to provide 'adaptive cruise control,' we would add on to our current solution by adding a function that is able to set and detect a distance between our car and another moving object. By detecting the distance, we could also attempt to detect the speed of the object moving infront of the crawler. If the speed if the moving object in front of the crawler is within a certain range of values (say between 0.1-0.4 m/s), we could match the speed of the object infront of it. However, if the speed is too slow (less than 0.1 m/s), then our crawler could try to "change lanes" as long as the wall/objects to the left or right of it are not within 25cm of distance with the crawler.
+In order to provide 'adaptive cruise control,' we would add on to our current solution by adding a function that is able to set and detect a distance between our car and another moving object. By detecting the distance, we could also attempt to detect the speed of the object moving infront of the buggy. If the speed if the moving object in front of the buggy is within a certain range of values (say between 0.1-0.4 m/s), we could match the speed of the object infront of it. However, if the speed is too slow (less than 0.1 m/s), then our buggy could try to "change lanes" as long as the wall/objects to the left or right of it are not within 25cm of distance with the buggy.
 
 ## Self-Assessment
 
@@ -41,8 +41,8 @@ In order to provide 'adaptive cruise control,' we would add on to our current so
 
 
 ## Sketches and Photos
-<center><img src="./images/ece444.png" width="25%" /></center>  
-<center> </center>
+<i>Cruise Control System</i>
+<img src="https://github.com/BU-EC444/Team15-Eze-Ganchozo-Roque/blob/master/quest-5/images/Quest5_System.jpg" width="800" >
 
 
 ## Supporting Artifacts
