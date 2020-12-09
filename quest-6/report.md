@@ -16,7 +16,7 @@ In this self-defined quest, we use 3 sensors, 2 actuators, 1 camera connected to
 | At least 3 working sensors |  |  1     | 
 | Timer that counts down next feeding time |  |  1     | 
 | Alphanumeric display shows time until next feeding |  |  1     | 
-| Servo successfully shakes so that food is released |  |  1     | 
+| Servo successfully shakes so that food is released | 1 |  1     | 
 | Each esp sends a message to a Node js server |  |  1     | 
 | Webpage that displays table of messages from each sensor |  |  1     | 
 | A camera feed is displayed on the webpage |  |  1     | 
