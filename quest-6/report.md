@@ -1,4 +1,4 @@
-# Quest 6: Cat Babysitter (Rename dog so Myles can make an appearance)
+# Quest 6: Pet Babysitter (Featuring Miles)
 Authors: Nnenna Eze, Lesbeth Roque
 
 Date: 2020-12-08
