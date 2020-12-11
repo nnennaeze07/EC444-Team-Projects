@@ -17,8 +17,8 @@ In this self-defined quest, we use 3 sensors, 2 actuators, 1 camera connected to
 | Timer that counts down next feeding time | 1 |  1     | 
 | Alphanumeric display shows time until next feeding | 1 |  1     | 
 | Servo successfully shakes so that food is released | 1 |  1     | 
-| Each esp sends a message to a Node js server |  |  1     | 
-| Webpage that displays table of messages from each sensor |  |  1     | 
+| Each esp sends a message to a Node js server | 1 |  1     | 
+| Webpage that displays table of messages from each sensor | 1 |  1     | 
 | A camera feed is displayed on the webpage | 1 |  1    | 
 
 
@@ -27,10 +27,10 @@ In this self-defined quest, we use 3 sensors, 2 actuators, 1 camera connected to
 
 | Qualitative Criterion | Rating | Max Value  | 
 |---------------------------------------------|:-----------:|:---------:|
-| Quality of solution |  |  5     | 
-| Quality of report.md including use of graphics |  |  3     | 
+| Quality of solution | 4 |  5     | 
+| Quality of report.md including use of graphics | 3 |  3     | 
 | Quality of code reporting | 3 |  3     | 
-| Quality of video presentation |  |  3     | 
+| Quality of video presentation | 3 |  3     | 
 
 
 ## Solution Design
