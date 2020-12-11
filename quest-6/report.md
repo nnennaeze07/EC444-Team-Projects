@@ -38,8 +38,7 @@ One of the more complex components of this project was the feeding aspect. A tim
 
 One unique solution design for this quest involved connecting multiple udp clients to one udp server. The esp that is connected to the IR rangefinder acts as a server, and the other two esps send data from the ultrasonic sensors. The server esp then combines the data of all sensors into one long string, and sends this data altogether to the Nodejs server. In order to do this, the esp server needed to figure out which IP address was sending data from each ultrasonic sensor. This was done using an if statement in the udp server task. Since we know the IP address of each esp, we were able to check a variable that figures out and stores theIP address of the esp that sent the data. This variable is compared to each esp IP address, and depending on which esp the data came from, we were able to figure out whether the data corresponded to the first or second ultrasonic sensor. 
 
-//lesbeth talk about webpage??
-
+Moreover, the node.js server receives a data string with the distances of the ultrasonic sensor, ir range finder, and ultrasonic 2 sensor, respectively. This data string is parsed in order to gather the distances from the string. These distances are then stored in a tingodb database, along with the timestamp (date and time in EST) of the measured distances. Using socket.io, we were able to show these distances in a table format in localhost webpage. This can help the pet owner reference when their pet last had a meal, used the bathroom, or took a nap. And last, using using an image reference on the html file for the rasbperry pi camera, we are able to display a livestream of the pet in action. 
 
 ## Sketches and Photos
 <center><img src="./images/ece444.png" width="25%" /></center>  
@@ -52,7 +51,7 @@ One unique solution design for this quest involved connecting multiple udp clien
 
 
 ## Supporting Artifacts
-- [Link to video demo](). Not to exceed 120s
+- [Link to video demo](https://youtu.be/SQtA3hluXjU). Not to exceed 120s
 
 
 ## Modules, Tools, Source Used Including Attribution
