@@ -1,0 +1,153 @@
+
+<!-- Quest 6 (Team 15)
+Authors: Nnenna Eze, Lesbeth Roque
+Date: 11/09/2020
+https://www.w3schools.com/html/html_tables.asp
+https://www.w3schools.com/js/js_output.asp-->
+
+<!DOCTYPE html>
+<html>
+<title>Quest 6 Data</title>
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.block1 {
+  display: block;
+  width: 30%;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.block1:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* width: 50%; */
+}
+
+</style>
+<body>
+
+<h2>Quest 6 Data</h2>
+<br>
+<p>Pet Activity:
+<div id="petActivity">pet activity</div>
+</p>
+<!-- <button type = "button" id="button1" class="block1 style="float: center;"> Reset Database</button> -->
+<br>
+<!-- <img crossorigin="anonymous" id = "source" width="640" height="480" src="http://192.168.1.223:8081/stream"
+      style="display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;"> -->
+<img src= "http://192.168.1.223:8081/?action=stream" width="400" height="230" class="center"/>
+<br>
+<button type = "button" id="button1" class="block1 style="float: center;"> Reset Database</button>
+
+
+<br>
+<p>Database Entry:
+<div id="testing">database entry</div>
+</p>
+
+<table style="width:100%">
+  <tr>
+    <th>Timestamp</th>
+    <th>US1</th>
+    <th>IR</th>
+    <th>US2</th>
+  </tr>
+	<tbody id="demo">
+	</tbody>
+</table>
+
+</body>
+
+<script>
+  // img stream?
+  //var img = document.getElementById("source");
+  // socket on html
+  $(function(){
+    var socket = io();
+    //socket.emit('reset',"null");
+
+    // $(document).ready(function(){
+    //   // button event
+    //   $(".block1").on('click', function(e){
+    //     socket.emit('reset',"reset");
+    //     console.log("reset database");
+    //   });
+    // });
+
+
+    // data d from the esp32, data split into socket, and now database is displayed in a <table>
+    socket.on('splitData', function(data){
+      console.log(data)
+      var txt = '';
+      document.getElementById('testing').innerHTML = JSON.stringify(data[data.length-1]);
+      for(var i = 0; i < data.length; i++) {
+        txt += '<tr><td>'+ data[i].timestamp+'</td><td>'+ data[i].ultrasonic+'</td><td>'+data[i].irRangeFinder+'</td><td>'+data[i].ultrasonic2 + '</td></tr>';
+
+        var activity = '';
+        if(data[i].ultrasonic <= 1) {
+          activity += 'Pet is probably resting';
+        }
+        if(data[i].irRangeFinder <= 1) {
+          activity += 'Pet is probably using the bathroom';
+        }
+        if(data[i].ultrasonic2 <= 1) {
+          activity += 'Pet is eating (or waiting for food)';
+        }
+      };
+      document.getElementById('petActivity').innerHTML = activity;
+      document.getElementById('demo').innerHTML = txt;
+    });
+  });
+
+  const button = document.getElementById('button1');
+  button.addEventListener('click', function(e) {
+  console.log('button was clicked');
+
+  fetch('/clicked', {method: 'POST'})
+    .then(function(response) {
+      if(response.ok) {
+        console.log('click was recorded');
+        return;
+      }
+      throw new Error('Request failed.');
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+  });
+
+  // if ()
+  // var activity = function()
+  // document.getElementById('petActivity').innerHTML = activity;
+
+
+
+  //</table>
+
+
+</script>
+</html>
