@@ -77,5 +77,9 @@ Raspberry Pi Camera
 
 [Ultrasonic Sensor Datasheet](https://esp32.com/viewtopic.php?t=5787)
 
+[Pi Webcam](https://pimylifeup.com/raspberry-pi-webcam-server/)
+
+[Database](http://whizzer.bu.edu/briefs/design-patterns/dp-db)
+
 -----
 
