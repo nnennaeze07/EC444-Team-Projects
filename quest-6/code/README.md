@@ -1,8 +1,3 @@
 # Code Readme
 
-Please describe what is in your code folder and subfolders. Make it
-easy for us to navigate this space.
-
-Also
-- Please provide your name and date in any code submitted
-- Indicate attributrion for any code you have adopted from elsewhere
+There are 3 C program codes, one for each sensor. Within the 3 esps there will be one designated as a UDP dual client/server that the other two will send their data to. Then, this server esp sends all of the sensor data to a Nodejs server. 
